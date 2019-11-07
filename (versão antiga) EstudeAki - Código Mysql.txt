@@ -1,0 +1,73 @@
+create table Prateleiras(
+
+id_prateleira INT PRIMARY KEY AUTO_INCREMENT,
+
+num_prateleira INT,
+
+categoria VARCHAR(45)
+
+);
+
+
+
+create table Livros(
+
+id_livro INT PRIMARY KEY AUTO_INCREMENT,
+
+título VARCHAR(45),
+
+autor VARCHAR(45),
+
+tradutor VARCHAR(255),
+
+editor VARCHAR (45),
+
+localizacao VARCHAR(45),
+
+data_publicacao DATE,
+
+num_paginas INT,
+
+ISBN INT,
+
+fk_id_prateleira INT,
+
+FOREIGN KEY (fk_id_prateleira) REFERENCES Prateleiras(id_prateleira)
+
+);
+
+
+
+create table Alunos(
+
+CPF VARCHAR (45) PRIMARY KEY NOT NULL,
+
+nome VARCHAR(100),
+
+data_nasc DATE,
+
+RG INT,
+
+num_matricula INT,
+
+endereco VARCHAR(255)
+
+);
+
+
+
+create table Emprestimos(
+
+id_emprestimo INT PRIMARY KEY AUTO_INCREMENT,
+
+data_emprestimo DATE,
+
+fk_cpf_aluno VARCHAR (45),
+
+fk_id_livro INT,
+
+FOREIGN KEY (fk_cpf_aluno) REFERENCES Alunos(CPF),
+
+FOREIGN KEY (fk_id_livro) REFERENCES Livros(id_livro)
+
+); 
